@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Muli:400,700');
+
+body{
+    background: #e8e8e8;
+    font-family: 'Muli';
+}
+
+h1 {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+
+.action {
+    cursor: pointer;
+}
+
+.action:hover {
+    color: blue;
+}
+
+.action:active {
+    color: green;
+}

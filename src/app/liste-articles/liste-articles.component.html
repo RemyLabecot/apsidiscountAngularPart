@@ -1,0 +1,33 @@
+<!-- <div>
+  <input type="text" [(ngModel)]=stockSelected/>
+  <button (click)='afficherTousArticles()'>Afficher tous les articles</button>
+  <button (click)='afficherArticlesAvecStock()'>Afficher les articles avec un stock >= à {{ stockSelected }}</button>
+</div> -->
+<table *ngIf='listeArticles' >
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>photo</th>
+      <th>désignation</th>
+      <th>prix</th>
+      <th>stock</th>
+      <th colspan="2">actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor='let art of listeArticles'>
+      <td>{{art.id}}</td>
+      <td><img [src]=art.image /></td>
+      <td (click)="selectArticle(art)">{{art.designation}}</td>
+      <td>{{art.prix | currency:'EUR'}}</td>
+      <td [appStock]=art.stock> {{ art.stock }} </td>
+      <td><i class='fas fa-trash-alt action' style='font-size:12px' (click)="supprimerArticle(art.id)"></i></td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+<div *ngIf='!listeArticles'>
+  <p>{{message}}</p>
+</div>
+
+<!-- <app-detail-article *ngFor='let art of listeArticles' [article]=art></app-detail-article> -->

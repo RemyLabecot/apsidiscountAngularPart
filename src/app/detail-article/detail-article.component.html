@@ -1,0 +1,33 @@
+
+
+<div class='container'>
+
+
+<div class="row">
+    <div class="col s1 m8">
+      <div class="card">
+        <div class="card-image">
+            <img [src]=article.image/>
+        </div>
+        <div class="card-content" [align]=alignement>
+            {{article.id}}<br>
+            {{article.designation}}<br>
+            {{article.dateMiseEnLigne}}<br>
+            {{article.categorie}}<br>
+            {{article.constructeur}}<br>
+            {{article.content}}<br>
+            {{article.prix}} €<br>
+            {{article.stock}}<br>        </div>
+        <div class="card-action">
+          <button (click)="augmenterPrix()">Augmenter Prix</button><br>
+          <input type="number" [(ngModel)]=article.stock (change)='afficherStock()'/>
+          <input type="number" [(ngModel)]=article.prix />
+          <a href="#">This is a link</a>
+          <br>
+          <button (click)="precedent()" [disabled]=disabled><</button>
+          <button (click)="suivant()">></button><br>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
