@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Article } from '../model/article';
-import { ARTICLES } from '../model/article-mock';
 import { ArticleService } from '../service/article.service';
 import { Router } from '@angular/router';
 
@@ -52,15 +51,11 @@ export class ListeArticlesComponent implements OnInit {
       },
       err => this.message = 'erreur lors de la suppression de l article'
     );
-
- 
   }
 
   selectArticle(art: Article){
     console.log('selectArticle : id =' + art.id);
     let link=['/gestionArticle', {outlets: {'detail': [art.id]}}];
     this.router.navigate(link);
-
   }
-
 }

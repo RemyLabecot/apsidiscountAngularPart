@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
   
 })
 export class DetailArticleComponent implements OnInit {
-  image = "assets/ecran_samsung_C27H580F.PNG";
+  // image = "assets/ecran_samsung_C27H580F.PNG";
   @Input() article: Article;
   alignement: string;
   disabled = false;
@@ -26,15 +26,15 @@ export class DetailArticleComponent implements OnInit {
     this.gererAlignement();
   }
 
-  public augmenterPrix() {
-    this.article.prix = this.article.prix + 5;
-    this.article.stock--;
-    this.gererAlignement();
-  }
+  // public augmenterPrix() {
+  //   this.article.prix = this.article.prix + 5;
+  //   this.article.stock--;
+  //   this.gererAlignement();
+  // }
 
-  public afficherStock() {
-    console.log(' le stock dans le composant est de :' + this.article.stock);
-  }
+  // public afficherStock() {
+  //   console.log(' le stock dans le composant est de :' + this.article.stock);
+  // }
 
   private gererAlignement() {
     this.alignement = 'center';

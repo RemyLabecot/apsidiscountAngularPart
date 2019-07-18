@@ -1,3 +1,15 @@
 img {
  width: 50px;
 }
+
+th, .table-dark > td {
+    background-color: #303030;
+}
+
+.thead_font {
+    color: aliceblue;
+}
+
+.btnSize {
+    width: 20px;
+}

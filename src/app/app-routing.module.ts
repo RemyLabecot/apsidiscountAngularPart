@@ -13,7 +13,7 @@ const appRoutes: Routes = [
             { path: ':id', component: DetailArticleComponent, outlet: 'detail' }]
     },
     { path: 'accueil', component: AccueilComponent },
-    { path: '', redirectTo: '/accueil', pathMatch: 'full' },
+    { path: '', redirectTo: '/gestionArticle', pathMatch: 'full' },
     { path: '**', component: AccueilComponent }
 ];
 
