@@ -55,7 +55,7 @@ export class ListeArticlesComponent implements OnInit {
 
   selectArticle(art: Article){
     console.log('selectArticle : id =' + art.id);
-    let link=['/gestionArticle', {outlets: {'detail': [art.id]}}];
+    let link=['gestionArticle', {outlets: {'detail': [art.id]}}];
     this.router.navigate(link);
   }
 }

@@ -12,4 +12,12 @@ th, .table-dark > td {
 
 .btnSize {
     width: 20px;
+    margin-left: 15px;
+    cursor: pointer;
 }
+
+tbody {
+    border: 1px solid black;
+}
+
+

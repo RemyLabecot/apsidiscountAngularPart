@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -9,9 +9,10 @@ import { DetailArticleComponent } from './detail-article/detail-article.componen
 import { ListeArticlesComponent } from './liste-articles/liste-articles.component';
 import { ArticleService } from './service/article.service';
 import { StockDirective } from './stock.directive';
-import { AngularWaitBarrier } from 'blocking-proxy/built/lib/angular_wait_barrier';
 import { GestionArticleComponent } from './gestion-article/gestion-article.component';
 import { AccueilComponent } from './accueil/accueil.component';
+import { ClientService } from './service/client.service';
+import { PanierComponent } from './panier/panier.component';
 
 @NgModule({
   declarations: [
@@ -20,15 +21,17 @@ import { AccueilComponent } from './accueil/accueil.component';
     ListeArticlesComponent,
     StockDirective,
     GestionArticleComponent,
-    AccueilComponent
+    AccueilComponent,
+    PanierComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
-  providers: [ArticleService],
+  providers: [ArticleService, ClientService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

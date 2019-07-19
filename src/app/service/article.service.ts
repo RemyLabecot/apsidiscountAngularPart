@@ -3,13 +3,13 @@ import { Injectable } from '@angular/core';
 import { Article } from '../model/article';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Client } from '../model/client';
 
 @Injectable()
 export class ArticleService {
 
   baseURL = 'http://localhost:8081/apsidiscountweb/api';
-
   httpOptions = {
     headers : new HttpHeaders({
       'Content-Type' : 'application/json'
@@ -19,7 +19,7 @@ export class ArticleService {
   constructor(private http: HttpClient) { }
 
   public getAllArticles(): Observable<Article[]>{
-    return this.http.get<Article[]>(`${this.baseURL}/articles`,this.httpOptions);
+    return this.http.get<Article[]>(`${this.baseURL}/allArticles`,this.httpOptions);
   }
 
   public getArticleById(id: number): Observable<Article>{

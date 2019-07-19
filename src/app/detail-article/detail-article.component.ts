@@ -38,8 +38,5 @@ export class DetailArticleComponent implements OnInit {
 
   private gererAlignement() {
     this.alignement = 'center';
-    if (this.article.prix < 15) {
-      this.alignement = 'left';
-    }
   }
 }

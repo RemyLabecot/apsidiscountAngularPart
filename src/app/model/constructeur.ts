@@ -1,4 +1,4 @@
-export class constructeur {
+export class Constructeur {
 
     constructor(
         public id: number,

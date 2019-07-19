@@ -1,5 +1,5 @@
-import { categorie } from './categorie';
-import { constructeur } from './constructeur';
+import { Categorie } from './categorie';
+import { Constructeur } from './constructeur';
 
 export class Article {
 
@@ -8,9 +8,8 @@ export class Article {
     public image: string,
     public prix: number,
     public content: string,
-    public categorie: categorie,
-    public constructeur: constructeur,
-    public dateMiseEnLigne: Date,
+    public categorie: Categorie,
+    public constructeur: Constructeur,
     public stock: number){
     }
 }

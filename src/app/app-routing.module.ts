@@ -4,6 +4,7 @@ import { GestionArticleComponent } from './gestion-article/gestion-article.compo
 import { ListeArticlesComponent } from './liste-articles/liste-articles.component';
 import { DetailArticleComponent } from './detail-article/detail-article.component';
 import { AccueilComponent } from './accueil/accueil.component';
+import { PanierComponent } from './panier/panier.component';
 
 const appRoutes: Routes = [
     {
@@ -12,9 +13,10 @@ const appRoutes: Routes = [
             { path: '', component: ListeArticlesComponent, outlet: 'list' },
             { path: ':id', component: DetailArticleComponent, outlet: 'detail' }]
     },
+    {path: 'panier', component: PanierComponent},
     { path: 'accueil', component: AccueilComponent },
-    { path: '', redirectTo: '/gestionArticle', pathMatch: 'full' },
-    { path: '**', component: AccueilComponent }
+    { path: '', redirectTo: '/accueil', pathMatch: 'full' },
+    { path: '**', component: AccueilComponent },
 ];
 
 @NgModule({

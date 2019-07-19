@@ -1,4 +1,4 @@
-export class categorie {
+export class Categorie {
 
     constructor(
         public id: number,

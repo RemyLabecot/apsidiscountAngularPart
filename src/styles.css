@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Muli:400,700');
 
 body{
-    background: #e8e8e8;
+    background-color: antiquewhite;
     font-family: 'Muli';
 }
 
@@ -23,3 +23,4 @@ h1 {
 .action:active {
     color: green;
 }
+

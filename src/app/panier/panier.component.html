@@ -1,0 +1,26 @@
+<h1>PANIER </h1>
+<table class="table table-hover" *ngIf='listeArticlesPanier'>
+    <thead>
+      <tr class="thead_font">
+        <th scope="col">photo</th>
+        <th scope="col">Désignation</th>
+        <th scope="col">prix</th>
+        <th scope="col">Supprimer</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-light" *ngFor='let art of listeArticlesPanier' (click)="selectArticle(art)">
+        <td scope="row"><img [src]=art.image /></td>
+        <td>{{art.designation}}</td>
+        <td>{{art.prix | currency:'EUR'}}</td>
+        <td [appStock]=art.stock> {{ art.stock }} </td>
+        <span *ngIf='art.stock > 0; else emptyBasket'>
+          <td><img src="assets/icons/cart.png" class="btnSize"> </td>
+        </span>
+        <ng-template #emptyBasket>
+          <td><img src="assets/icons/no-shopping-cart.png" class="btnSize"></td>
+        </ng-template>
+        <td><img src="assets/icons/garbageBlack.png" class="btnSize" (click)="supprimerArticlePanier(art.id)"></td>
+      </tr>
+    </tbody>
+  </table>
