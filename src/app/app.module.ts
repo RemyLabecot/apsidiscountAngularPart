@@ -13,6 +13,7 @@ import { GestionArticleComponent } from './gestion-article/gestion-article.compo
 import { AccueilComponent } from './accueil/accueil.component';
 import { ClientService } from './service/client.service';
 import { PanierComponent } from './panier/panier.component';
+import { PanierService } from './service/panier.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { PanierComponent } from './panier/panier.component';
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [ArticleService, ClientService],
+  providers: [ArticleService, ClientService, PanierService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

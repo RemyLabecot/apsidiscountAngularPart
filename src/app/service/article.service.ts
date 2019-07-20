@@ -45,7 +45,7 @@ export class ArticleService {
       "idClient": idClient,
       "idArticle": idArticle
     };
-    return this.http.post<Article>(`${this.baseURL}/panier`, jsonObject, this.httpOptions);
+    return this.http.post<Article>(`${this.baseURL}/panier`,  jsonObject, this.httpOptions);
   }
 
   public getArticlesByIdClient(id: number): Observable<Article[]> {

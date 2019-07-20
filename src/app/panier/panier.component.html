@@ -13,7 +13,7 @@
       <td scope="row"><img [src]=art.image /></td>
       <td>{{art.designation}}</td>
       <td>{{art.prix | currency:'EUR'}}</td>
-      <td><img src="assets/icons/garbageBlack.png" class="btnSize" (click)="supprimerArticlePanier(art.id)"></td>
+      <td><img src="assets/icons/garbageBlack.png" class="btnSize" (click)="deleteArticle(art.id)"></td>
     </tr>
   </tbody>
 </table>
