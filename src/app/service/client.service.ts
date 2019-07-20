@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Client } from '../model/client';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class ClientService {
@@ -15,9 +15,7 @@ export class ClientService {
         })
     };
 
-    constructor(private http: HttpClient) {
-
-    }
+    constructor(private http: HttpClient) {}
 
     public getClientByLoginAndPassword(email: string, password: string): Observable<Client> {
         let jsonObject = {
@@ -33,5 +31,4 @@ export class ClientService {
     public set client(value) {
         this._client = value;
     }
-
 }

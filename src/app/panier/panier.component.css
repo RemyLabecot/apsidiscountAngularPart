@@ -1,0 +1,21 @@
+img {
+    width: 50px;
+   }
+   
+   th, .table-dark > td {
+       background-color: #303030;
+   }
+   
+   .thead_font {
+       color: aliceblue;
+   }
+   
+   .btnSize {
+       width: 20px;
+       margin-left: 15px;
+       cursor: pointer;
+   }
+   
+   tbody {
+       border: 1px solid black;
+   }

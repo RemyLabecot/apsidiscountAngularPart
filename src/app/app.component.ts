@@ -13,14 +13,17 @@ export class AppComponent {
   subscription: Subscription;
   nomClient: string;
   prenomClient: string;
+  idClient: number;
 
   constructor(private clientService: ClientService) {
-    this.subscription = this.clientService.client.subscribe(
-      client => {
-        this.nomClient = client.nom
-        this.prenomClient = client.prenom
-      }
-    )
+    this.subscription = this.clientService.client
+      .subscribe(
+        client => {
+          this.nomClient = client.nom
+          this.prenomClient = client.prenom
+          this.idClient = client.id
+        }
+      )
   }
 
 

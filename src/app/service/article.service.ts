@@ -4,7 +4,6 @@ import { Article } from '../model/article';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Client } from '../model/client';
 
 @Injectable()
 export class ArticleService {
@@ -38,5 +37,18 @@ export class ArticleService {
 
   public deleteArticle(id: number): Observable<Article>{
     return this.http.delete<Article>(`${this.baseURL}/article/${id}`,this.httpOptions);
+  }
+
+  public addPanier(idClient: number, idArticle: number): Observable<Article>{
+
+    let jsonObject = {
+      "idClient": idClient,
+      "idArticle": idArticle
+    };
+    return this.http.post<Article>(`${this.baseURL}/panier`, jsonObject, this.httpOptions);
+  }
+
+  public getArticlesByIdClient(id: number): Observable<Article[]> {
+    return this.http.get<Article[]>(`${this.baseURL}/articles/${id}`, this.httpOptions);
   }
 }

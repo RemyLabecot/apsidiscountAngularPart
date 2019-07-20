@@ -37,12 +37,14 @@ export class AccueilComponent implements OnInit {
   public getClientByLoginAndPassword() {
     let email = this.email.value;
     let password = this.password.value;
-    this.clientService.getClientByLoginAndPassword(email, password).subscribe(client => {
-      this.clientService.client.next(client)
-      this.router.navigate(['gestionArticle']);
-    }
-      ,
-      err => this.error = err.error.message
-    );
+    this.clientService.getClientByLoginAndPassword(email, password)
+      .subscribe(client => {
+        this.clientService.client.next(client)
+        console.log("connecté");
+        this.router.navigate(['gestionArticle']);
+      }
+        ,
+        err => this.error = err.error.message
+      );
   }
 }
