@@ -3,8 +3,11 @@ import { Article } from '../model/article';
 import { ArticleService } from '../service/article.service';
 import { Router } from '@angular/router';
 import { Client } from '../model/client';
-import { Subscription } from 'rxjs';
 import { AppComponent } from '../app.component';
+import Swal from 'sweetalert2';
+import { CategorieService } from '../service/categorie.service';
+import { ClientService } from '../service/client.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-liste-articles',
@@ -14,26 +17,29 @@ import { AppComponent } from '../app.component';
 })
 export class ListeArticlesComponent implements OnInit {
 
-  listeArticles: Article[];
-  listArticlesPanier: Article[] = [];
+  private listeArticles: Article[] = [];
+  private listArticlesPanier: Article[] = [];
 
-  client: Client;
-  idClient: number;
+  private client: Client;
+  private idClient: number;
 
-  message: string;
-  stockSelected: number;
-  typeListe: number;
-  subscription: Subscription;
+  private message: string;
+  private stockSelected: number;
+  private typeListe: number;
 
-  constructor(private router: Router, private articleService: ArticleService, private appComponent: AppComponent) { }
+  private subscription: Subscription;
+
+  constructor(private router: Router, private clientService: ClientService, private articleService: ArticleService, private categorieService: CategorieService, private appComponent: AppComponent) { 
+    this.subscription = this.articleService._article
+      .subscribe(
+        articles => {
+          this.listeArticles = articles
+        }
+      );
+  }
 
   ngOnInit() {
-    
     this.idClient = this.appComponent.idClient;
-    if (this.idClient == null) {
-      this.router.navigate(['accueil']);
-    }
-
     this.articleService.getAllArticles()
       .subscribe(
         articles => this.listeArticles = articles
@@ -82,6 +88,11 @@ export class ListeArticlesComponent implements OnInit {
       .subscribe(
         article => {
           this.listArticlesPanier.push(article)
+          Swal.fire(
+            'Bravo !',
+            'Votre article a bien été ajouté au panier !',
+            'success'
+          )
         }
       );
   }

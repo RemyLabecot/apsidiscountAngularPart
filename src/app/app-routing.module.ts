@@ -11,9 +11,11 @@ const appRoutes: Routes = [
         path: 'gestionArticle', component: GestionArticleComponent,
         children: [
             { path: '', component: ListeArticlesComponent, outlet: 'list' },
-            { path: ':id', component: DetailArticleComponent, outlet: 'detail' }]
+            { path: ':id', component: DetailArticleComponent, outlet: 'detail' }
+            ]
     },
-    {path: 'panier', component: PanierComponent},
+
+    { path: 'panier', component: PanierComponent },
     { path: 'accueil', component: AccueilComponent },
     { path: '', redirectTo: '/accueil', pathMatch: 'full' },
     { path: '**', component: AccueilComponent },

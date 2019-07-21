@@ -4,31 +4,33 @@
   <button (click)='afficherArticlesAvecStock()'>Afficher les articles avec un stock >= à {{ stockSelected }}</button>
 </div> -->
 
-  <table class="table table-hover" *ngIf='listeArticles'>
-    <thead>
-      <tr class="thead_font">
-        <th scope="col">photo</th>
-        <th scope="col">Désignation</th>
-        <th scope="col">prix</th>
-        <th scope="col">Stock</th>
-        <th scope="col">Panier</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="table-light" *ngFor='let art of listeArticles' (click)="selectArticle(art)">
-        <td scope="row"><img [src]=art.image /></td>
-        <td>{{art.designation}}</td>
-        <td>{{art.prix | currency:'EUR'}}</td>
-        <td [appStock]=art.stock> {{ art.stock }} </td>
-        <span *ngIf='art.stock > 0; else emptyBasket'>
+<table class="table table-hover" *ngIf='listeArticles'>
+  <thead>
+    <tr class="thead_font">
+      <th scope="col">photo</th>
+      <th scope="col">Désignation</th>
+      <th scope="col">prix</th>
+      <th scope="col">Stock</th>
+      <th scope="col" *ngIf="idClient">Panier</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="table-light" *ngFor='let art of listeArticles' (click)="selectArticle(art)">
+      <td scope="row"><img [src]=art.image /></td>
+      <td>{{art.designation}}</td>
+      <td>{{art.prix | currency:'EUR'}}</td>
+      <td [appStock]=art.stock> {{ art.stock }} </td>
+      <div *ngIf="idClient">
+        <span *ngIf='art.stock > 0; else emptyStock'>
           <td><img src="assets/icons/cart.png" class="btnSize" (click)="ajouterAuPanier(art)"> </td>
         </span>
-        <ng-template #emptyBasket>
+        <ng-template #emptyStock>
           <td><img src="assets/icons/no-shopping-cart.png" class="btnSize"></td>
         </ng-template>
-      </tr>
-    </tbody>
-  </table>
+      </div>
+    </tr>
+  </tbody>
+</table>
 
 
 <div *ngIf='!listeArticles'>

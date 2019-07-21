@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 
 import { Article } from '../model/article';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class ArticleService {
@@ -14,6 +14,7 @@ export class ArticleService {
       'Content-Type' : 'application/json'
     })
   };
+  _article = new Subject<Article[]>();
 
   constructor(private http: HttpClient) { }
 
@@ -50,5 +51,9 @@ export class ArticleService {
 
   public getArticlesByIdClient(id: number): Observable<Article[]> {
     return this.http.get<Article[]>(`${this.baseURL}/articles/${id}`, this.httpOptions);
+  }
+
+  public getArticlesByCategorie(nomCategorie: string): Observable<Article[]> {
+    return this.http.get<Article[]>(`${this.baseURL}/categories/${nomCategorie}`, this.httpOptions);
   }
 }

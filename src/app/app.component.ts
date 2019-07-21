@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
-import { AccueilComponent } from './accueil/accueil.component';
 import { ClientService } from './service/client.service';
-import { Subscription } from 'rxjs';
+import { Subscription, Subject } from 'rxjs';
+import { Categorie } from './model/categorie';
+import { CategorieService } from './service/categorie.service';
+import { Article } from './model/article';
+import { ArticleService } from './service/article.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,13 +13,19 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'matInfo';
-  subscription: Subscription;
-  nomClient: string;
-  prenomClient: string;
-  idClient: number;
 
-  constructor(private clientService: ClientService) {
+  private title = 'matInfo';
+  private subscription: Subscription;
+
+  private nomClient: string;
+  private prenomClient: string;
+  private _idClient: number;
+
+
+  private categories: Categorie[];
+  private listeArticlesByCategorie: Article[];
+
+  constructor(private clientService: ClientService, private categorieService: CategorieService, private articleService: ArticleService, private router: Router) {
     this.subscription = this.clientService.client
       .subscribe(
         client => {
@@ -24,10 +34,31 @@ export class AppComponent {
           this.idClient = client.id
         }
       )
+
+    this.categorieService.getCategories()
+      .subscribe(
+        categories => this.categories = categories
+      );
   }
 
-
   ngOnInit() {
+  }
+
+  public afficherArticlesCategorie(nomCategorie: string) {
+    console.log(nomCategorie);
+    this.articleService.getArticlesByCategorie(nomCategorie)
+      .subscribe(
+        articles => {
+          this.articleService._article.next(articles)
+        }
+      );
+  }
+
+  public get idClient(): number {
+    return this._idClient;
+  }
+  public set idClient(value: number) {
+    this._idClient = value;
   }
 
   ngOnDestroy() {

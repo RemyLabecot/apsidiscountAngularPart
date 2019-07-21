@@ -12,8 +12,8 @@ import { ActivatedRoute } from '@angular/router';
 export class DetailArticleComponent implements OnInit {
   // image = "assets/ecran_samsung_C27H580F.PNG";
   @Input() article: Article;
-  alignement: string;
-  disabled = false;
+  private alignement: string;
+  private disabled = false;
 
   constructor(private route:ActivatedRoute, private articleService : ArticleService) {}
 

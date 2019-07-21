@@ -16,9 +16,9 @@ import { Subscription } from 'rxjs';
 export class PanierComponent implements OnInit {
 
 
-  listeArticles: Article[];
-  idClient: number;
-  subscription: Subscription;
+  private listeArticles: Article[];
+  private idClient: number;
+  private subscription: Subscription;
 
   constructor(private articleService: ArticleService, private panierService: PanierService, private appComponent: AppComponent, private router: Router) {
   }

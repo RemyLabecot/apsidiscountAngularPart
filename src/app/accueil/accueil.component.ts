@@ -5,6 +5,7 @@ import { Client } from '../model/client';
 import { ClientService } from '../service/client.service';
 import { Router } from '@angular/router';
 import { AppComponent } from '../app.component';
+import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-accueil',
@@ -13,17 +14,16 @@ import { AppComponent } from '../app.component';
 })
 export class AccueilComponent implements OnInit {
 
-  email: FormControl;
-  password: FormControl;
-
-  loginForm: FormGroup;
+  private email: FormControl;
+  private password: FormControl;
+  private loginForm: FormGroup;
+  
   error: string;
 
   constructor(private clientService: ClientService, private builder: FormBuilder, private router: Router, private app: AppComponent) {
 
     this.email = new FormControl('', Validators.required);
     this.password = new FormControl('', Validators.required);
-
 
     this.loginForm = this.builder.group({
       email: this.email,

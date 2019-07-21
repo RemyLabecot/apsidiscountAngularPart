@@ -17,6 +17,14 @@
       <li class="nav-item">
           <a class="nav-link" href="#" routerLink="/panier" routerLinkActive="active">Panier</a>
       </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Catégories
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" *ngFor="let categorie of categories" (click)="afficherArticlesCategorie(categorie.nom)">{{categorie.nom}}</a>
+        </div>
+      </li>
     </ul>
     <div class="form-inline my-2 my-lg-0">
       <button class="btn btn-secondary my-2 my-sm-0" type="submit">Bienvenue {{prenomClient}} {{nomClient}}</button>
@@ -25,4 +33,5 @@
 </nav>
 <br>
 <br>
+<a *ngFor="let article of listeArticlesByCategorie">{{article.designation}}</a>
 <router-outlet></router-outlet>
