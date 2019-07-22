@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 import { CategorieService } from '../service/categorie.service';
 import { ClientService } from '../service/client.service';
 import { Subscription } from 'rxjs';
+import { PanierService } from '../service/panier.service';
 
 @Component({
   selector: 'app-liste-articles',
@@ -29,7 +30,7 @@ export class ListeArticlesComponent implements OnInit {
 
   private subscription: Subscription;
 
-  constructor(private router: Router, private clientService: ClientService, private articleService: ArticleService, private categorieService: CategorieService, private appComponent: AppComponent) { 
+  constructor(private router: Router, private clientService: ClientService, private articleService: ArticleService, private categorieService: CategorieService, private panierService: PanierService, private appComponent: AppComponent) { 
     this.subscription = this.articleService.article
       .subscribe(
         articles => {
@@ -84,7 +85,7 @@ export class ListeArticlesComponent implements OnInit {
   }
 
   ajouterAuPanier(art: Article) {
-    this.articleService.addPanier(this.idClient, art.id)
+    this.panierService.addPanier(this.idClient, art.id)
       .subscribe(
         article => {
           this.listArticlesPanier.push(article)

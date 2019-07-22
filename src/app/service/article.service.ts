@@ -8,8 +8,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable()
 export class ArticleService {
 
-  baseURL = 'http://localhost:8081/apsidiscountweb/api';
-  httpOptions = {
+  private baseURL = 'http://localhost:8081/apsidiscountweb/api';
+  private httpOptions = {
     headers : new HttpHeaders({
       'Content-Type' : 'application/json'
     })
@@ -41,21 +41,12 @@ export class ArticleService {
     return this.http.delete<Article>(`${this.baseURL}/article/${id}`,this.httpOptions);
   }
 
-  public addPanier(idClient: number, idArticle: number): Observable<Article>{
-
-    let jsonObject = {
-      "idClient": idClient,
-      "idArticle": idArticle
-    };
-    return this.http.post<Article>(`${this.baseURL}/panier`,  jsonObject, this.httpOptions);
-  }
-
   public getArticlesByIdClient(id: number): Observable<Article[]> {
     return this.http.get<Article[]>(`${this.baseURL}/articles/${id}`, this.httpOptions);
   }
 
   public getArticlesByCategorie(idCategorie: number): Observable<Article[]> {
-    return this.http.get<Article[]>(`${this.baseURL}/categories/${idCategorie}`, this.httpOptions);
+    return this.http.get<Article[]>(`${this.baseURL}/articlesByCategorie/${idCategorie}`, this.httpOptions);
   }
 
   public get article() {

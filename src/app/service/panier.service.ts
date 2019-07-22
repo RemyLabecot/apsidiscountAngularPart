@@ -14,10 +14,16 @@ export class PanierService {
         })
     };
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) { }
+
+
+    public addPanier(idClient: number, idArticle: number): Observable<Article> {
+
+        return this.http.put<Article>(`${this.baseURL}/panier/client/${idClient}/article/${idArticle}`, this.httpOptions);
+    }
 
     public deleteArticleFromPanier(idClient: number, idArticle: number): Observable<Article> {
-        
+
         return this.http.delete<Article>(`${this.baseURL}/panier/client/${idClient}/article/${idArticle}`, this.httpOptions);
     }
 }
