@@ -16,6 +16,9 @@ import { PanierComponent } from './panier/panier.component';
 import { PanierService } from './service/panier.service';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { CategorieService } from './service/categorie.service';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +35,8 @@ import { CategorieService } from './service/categorie.service';
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    NgbModule,
+    NgbPaginationModule,
     SweetAlert2Module.forRoot({
       buttonsStyling: false,
       customClass: 'modal-content',

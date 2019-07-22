@@ -28,6 +28,9 @@ export class ListeArticlesComponent implements OnInit {
   private stockSelected: number;
   private typeListe: number;
 
+  page = 5;
+  pageSize = 5;
+
   private subscription: Subscription;
 
   constructor(private router: Router, private clientService: ClientService, private articleService: ArticleService, private categorieService: CategorieService, private panierService: PanierService, private appComponent: AppComponent) { 

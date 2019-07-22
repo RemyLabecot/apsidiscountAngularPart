@@ -3,7 +3,7 @@
   <button (click)='afficherTousArticles()'>Afficher tous les articles</button>
   <button (click)='afficherArticlesAvecStock()'>Afficher les articles avec un stock >= à {{ stockSelected }}</button>
 </div> -->
-
+<ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="listeArticles.length"></ngb-pagination>
 <table class="table table-hover" *ngIf='listeArticles'>
   <thead>
     <tr class="thead_font">
@@ -15,7 +15,9 @@
     </tr>
   </thead>
   <tbody>
-    <tr class="table-light" *ngFor='let art of listeArticles' (click)="selectArticle(art)">
+    <tr class="table-light"
+      *ngFor='let art of listeArticles | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize'
+      (click)="selectArticle(art)">
       <td scope="row"><img [src]=art.image /></td>
       <td>{{art.designation}}</td>
       <td>{{art.prix | currency:'EUR'}}</td>
@@ -31,6 +33,7 @@
     </tr>
   </tbody>
 </table>
+<ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="listeArticles.length"></ngb-pagination>
 
 
 <div *ngIf='!listeArticles'>
