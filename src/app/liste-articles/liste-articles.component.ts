@@ -30,7 +30,7 @@ export class ListeArticlesComponent implements OnInit {
   private subscription: Subscription;
 
   constructor(private router: Router, private clientService: ClientService, private articleService: ArticleService, private categorieService: CategorieService, private appComponent: AppComponent) { 
-    this.subscription = this.articleService._article
+    this.subscription = this.articleService.article
       .subscribe(
         articles => {
           this.listeArticles = articles

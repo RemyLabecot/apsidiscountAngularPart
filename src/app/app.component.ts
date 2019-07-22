@@ -21,9 +21,8 @@ export class AppComponent {
   private prenomClient: string;
   private _idClient: number;
 
-
   private categories: Categorie[];
-  private listeArticlesByCategorie: Article[];
+  private updateListeArticles= new Subject<Article[]>();
 
   constructor(private clientService: ClientService, private categorieService: CategorieService, private articleService: ArticleService, private router: Router) {
     this.subscription = this.clientService.client
@@ -44,12 +43,12 @@ export class AppComponent {
   ngOnInit() {
   }
 
-  public afficherArticlesCategorie(nomCategorie: string) {
-    console.log(nomCategorie);
-    this.articleService.getArticlesByCategorie(nomCategorie)
+  public afficherArticlesCategorie(idCategorie: number) {
+    console.log(idCategorie);
+    this.articleService.getArticlesByCategorie(idCategorie)
       .subscribe(
         articles => {
-          this.articleService._article.next(articles)
+          this.articleService.article.next(articles)
         }
       );
   }
@@ -59,6 +58,16 @@ export class AppComponent {
   }
   public set idClient(value: number) {
     this._idClient = value;
+  }
+
+  public updateListe() {
+    this.articleService.getAllArticles()
+      .subscribe(
+        articles => {
+          this.articleService.article.next(articles)
+          console.log("oups")
+        }
+      );
   }
 
   ngOnDestroy() {

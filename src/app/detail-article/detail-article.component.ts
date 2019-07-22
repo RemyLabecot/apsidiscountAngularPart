@@ -7,7 +7,7 @@ import { ActivatedRoute } from '@angular/router';
   selector: "app-detail-article",
   templateUrl: "./detail-article.component.html",
   styleUrls: ["./detail-article.component.css"]
-  
+
 })
 export class DetailArticleComponent implements OnInit {
   // image = "assets/ecran_samsung_C27H580F.PNG";
@@ -15,13 +15,16 @@ export class DetailArticleComponent implements OnInit {
   private alignement: string;
   private disabled = false;
 
-  constructor(private route:ActivatedRoute, private articleService : ArticleService) {}
+  constructor(private route: ActivatedRoute, private articleService: ArticleService) { }
 
   ngOnInit() {
     console.log('DetailArticleComponent - ngOnInit() appelée... ');
     this.route.paramMap.subscribe(param => {
       let id = parseInt(param.get('id'));
-      this.articleService.getArticleById(id).subscribe(data => this.article = data);
+      this.articleService.getArticleById(id)
+        .subscribe(
+          data => this.article = data
+        );
     });
     this.gererAlignement();
   }

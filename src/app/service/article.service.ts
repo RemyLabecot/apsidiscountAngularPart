@@ -14,7 +14,8 @@ export class ArticleService {
       'Content-Type' : 'application/json'
     })
   };
-  _article = new Subject<Article[]>();
+  private _article = new Subject<Article[]>();
+  
 
   constructor(private http: HttpClient) { }
 
@@ -53,7 +54,14 @@ export class ArticleService {
     return this.http.get<Article[]>(`${this.baseURL}/articles/${id}`, this.httpOptions);
   }
 
-  public getArticlesByCategorie(nomCategorie: string): Observable<Article[]> {
-    return this.http.get<Article[]>(`${this.baseURL}/categories/${nomCategorie}`, this.httpOptions);
+  public getArticlesByCategorie(idCategorie: number): Observable<Article[]> {
+    return this.http.get<Article[]>(`${this.baseURL}/categories/${idCategorie}`, this.httpOptions);
+  }
+
+  public get article() {
+    return this._article;
+  }
+  public set article(value) {
+    this._article = value;
   }
 }
