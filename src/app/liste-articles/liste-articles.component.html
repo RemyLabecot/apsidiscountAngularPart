@@ -21,7 +21,7 @@
       <td scope="row"><img [src]=art.image /></td>
       <td>{{art.designation}}</td>
       <td>{{art.prix | currency:'EUR'}}</td>
-      <td [appStock]=art.stock> {{ art.stock }} </td>
+      <td><span [appStock]=art.stock>{{ art.stock }}</span></td>
       <div *ngIf="idClient">
         <span *ngIf='art.stock > 0; else emptyStock'>
           <td><img src="assets/icons/cart.png" class="btnSize" (click)="ajouterAuPanier(art)"> </td>
